@@ -1,22 +1,31 @@
+import "./SearchBar.css";
+import SearchIcon from "./Icons/SearchIcon";
+import ClearIcon from "./Icons/ClearIcon";
 
-import './SearchBar.css';
-
-function SearchBar(){
-    return (
-        <div className='searchbar-container'>
-            <form>                
-                <input  className='search-bar'/>
-                <button>Search</button>                
-            </form>
-            <div className='filter-btns'>
-                    <button className='filter-btn'>Title</button>
-                    <button className='filter-btn'>Artist</button>
-                    <button className='filter-btn'>Album</button>
-                    <button className='filter-btn'>Genre</button>
-                    <button className='filter-btn'>Year</button>
-                </div>            
+function SearchBar() {
+  return (
+    <header className="header">
+      <div className="searchWrapper">
+        <div className="inputWrapper">
+          <span className="searchIcon">
+            <SearchIcon />
+          </span>
+          <span className="clearIcon">
+            <ClearIcon />
+          </span>
+          <input className="input" />
         </div>
-    );
+        <button className="searchButton">Search</button>
+        <div className="fieldsWrapper">
+          <button className="chip">Title</button>
+          <button className="chip">Artist</button>
+          <button className="chip">Album</button>
+          <button className="chip">Genre</button>
+          <button className="chip">Year</button>
+        </div>
+      </div>
+    </header>
+  );
 }
 
 export default SearchBar;

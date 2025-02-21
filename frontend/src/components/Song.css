@@ -1,43 +1,28 @@
-#song-container {
-    display: flex;
-    flex-direction: row;
-    row-gap: 10px;
-    column-gap: 10px;
-    justify-content: flex-start;
+.row {
+  height: 56px;
+  color: rgb(179, 179, 179);
 }
 
-.thumbnail-container {
-    background-color: black;
-    width: 200px;
-    height: 150px;
-    display: inline-block; /* makes it fit in like an <img> */
-    background-size: cover; /* or contain */
-    background-position: center center;
-    background-repeat: no-repeat;
-    img {
-        max-height: 100%;
-        max-width: 100%;
-      }
-}
-img {
-    height: 100%;
+.titleContent {
+  display: flex;
+  flex-direction: row;
 }
 
-.identifier {
-    /* flex-grow: 1; */
+.titleContent .imageWrapper {
+  width: 40px;
+  height: 40px;
+  background-color: gray;
+  border: 0;
+  margin-right: 16px;
 }
-.song-artist {
-    /* display: flex;
-    flex-direction: column; */
-    /* flex-grow: 2; */
-    
+
+.titleContent .image {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
-.album-container {
-    /* flex-grow: 1; */
-}
-.genres-container {
-    /* flex-grow: 1; */
-}
-.duration-container {
-    /* flex-grow: 1; */
+
+.songTitle {
+  font-size: 16px;
+  color: rgb(255, 255, 255);
 }
