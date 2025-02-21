@@ -1,0 +1,42 @@
+.searchbar-container {
+    /* margin: auto;
+    width: 50%; */
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    
+}
+
+.search-bar {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.searchbar-container form {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+.searchbar-container form button {
+    border-radius: 5px;
+    color: white;
+    background-color: blue;
+    width: 150px;
+}
+
+.filter-btns {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}

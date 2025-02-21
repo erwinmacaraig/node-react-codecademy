@@ -1,0 +1,43 @@
+#song-container {
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+    column-gap: 10px;
+    justify-content: flex-start;
+}
+
+.thumbnail-container {
+    background-color: black;
+    width: 200px;
+    height: 150px;
+    display: inline-block; /* makes it fit in like an <img> */
+    background-size: cover; /* or contain */
+    background-position: center center;
+    background-repeat: no-repeat;
+    img {
+        max-height: 100%;
+        max-width: 100%;
+      }
+}
+img {
+    height: 100%;
+}
+
+.identifier {
+    /* flex-grow: 1; */
+}
+.song-artist {
+    /* display: flex;
+    flex-direction: column; */
+    /* flex-grow: 2; */
+    
+}
+.album-container {
+    /* flex-grow: 1; */
+}
+.genres-container {
+    /* flex-grow: 1; */
+}
+.duration-container {
+    /* flex-grow: 1; */
+}
