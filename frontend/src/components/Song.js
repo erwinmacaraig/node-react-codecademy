@@ -1,13 +1,13 @@
 import "./Song.css";
 
-function Song({ id, title, thumbnail, artist, album, genres, duration }) {
+function Song({ id, title, coverImage, artist, album, genre, duration }) {
   return (
     <tr className="row">
       <td>{id}</td>
       <td>
         <div className="titleContent">
           <div className="imageWrapper">
-            <img className="image" src={thumbnail} alt="thumbnail" />
+            <img className="image" src={coverImage} alt="thumbnail" />
           </div>
           <div className="songTitle">
             <div>{title}</div>
@@ -16,7 +16,16 @@ function Song({ id, title, thumbnail, artist, album, genres, duration }) {
         </div>
       </td>
       <td>{album}</td>
-      <td>{genres}</td>
+      <td>{
+        genre.map((genre) => {         
+          return (
+            <>
+              <span>{genre}</span>
+              <br />
+            </>
+          )
+        })   
+      }</td>
       <td>{duration}</td>
     </tr>
   );
