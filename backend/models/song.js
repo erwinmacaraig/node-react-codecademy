@@ -109,7 +109,7 @@ class Song {
    * @param {number} limit
    * @returns {SearchResult}
    */
-  searchByYear(year, page = 1, limit = 50) {
+  async searchByYear(year, page = 1, limit = 50) {
     return this._applyPageLimit(
       data.songs.filter((song) => song.year === Number(year)),
       page,

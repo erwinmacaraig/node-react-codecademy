@@ -6,11 +6,13 @@ const genres = require("./models/genre");
 const DEFAULT_HEADER = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
+    "Access-Control-Request-Method": "*",
+    "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
+    "Access-Control-Allow-Headers": "*"
   };
 
 
-const handleGetRequest = (req, res) => {
-    res.writeHeader(200, DEFAULT_HEADER);    
+const handleGetRequest = (req, res) => {        
      const  url  = req.url;
      const [pathname, queries] = url.split('?');
     
@@ -109,6 +111,7 @@ const handleGetRequest = (req, res) => {
 
 // create a sercver
 const server = http.createServer((req, res) => {
+    res.writeHeader(200, DEFAULT_HEADER);
     // handle routes here
     const {method} = req;
     console.log(method);
@@ -118,6 +121,10 @@ const server = http.createServer((req, res) => {
         break;
         case 'POST':
             handlePostRequest(req, res);
+        break;
+        case 'OPTIONS':            
+            res.end();
+            return;
         break;
         
     }
