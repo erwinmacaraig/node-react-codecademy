@@ -3,12 +3,17 @@ const querystring = require('querystring');
 const songs = require("./models/song");
 const genres = require("./models/genre");
 
+const DEFAULT_HEADER = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  };
+
+
 const handleGetRequest = (req, res) => {
-    // console.log('*****', req.url);
-     const  url  = req.url;    
-    //  console.log(url);
+    res.writeHeader(200, DEFAULT_HEADER);    
+     const  url  = req.url;
      const [pathname, queries] = url.split('?');
-    // http://localhost:8081/songs
+    
     if(pathname == '/songs') {       
         if (queries !== undefined) {
             let parsedQueries = querystring.parse(queries);
@@ -40,27 +45,63 @@ const handleGetRequest = (req, res) => {
                        
                     break;
                     case 'album':
-
+                        songs.searchByAlbum(searchKey, page, limit).then((data) => {                           
+                            res.write(JSON.stringify(data));
+                            return res.end();
+                        }).catch(e => {
+                            console.log(e);
+                        });
                     break;
                     case 'artist':
-
+                        songs.searchByArtist(searchKey, page, limit).then((data) => {                           
+                            res.write(JSON.stringify(data));
+                            return res.end();
+                        }).catch(e => {
+                            console.log(e);
+                        });
                     break;
                     case 'genre':
-                        console.log('To process genre');
+                        songs.searchByGenre(searchKey, page, limit).then((data) => {                           
+                            res.write(JSON.stringify(data));
+                            return res.end();
+                        }).catch(e => {
+                            console.log(e);
+                        });
                     break;
                     case 'year':
-
+                        songs.searchByYear(searchKey, page, limit).then((data) => {                           
+                            res.write(JSON.stringify(data));
+                            return res.end();
+                        }).catch(e => {
+                            console.log(e);
+                        });
                     break;
                     default:
+                        
                         return res.end(fieldOption.toLowerCase());
                     
                 }
             } else {
                 return res.end('No search keyword provided');
             }
+        } else {
+            songs.findAll().then((data) => {
+                res.write(JSON.stringify(data));
+                return res.end();
+            }).catch(e => {
+                console.log(e);
+            });
         }
         // return res.end('OK');
-    } else {
+    } else if(pathname == '/genres') {
+        genres.findAll().then((data) => {
+            res.write(JSON.stringify(data));
+            return res.end();
+        }).catch(e => {
+            console.log(e);
+        });
+    } 
+    else {
         return res.end('Not found');
     }
     
@@ -84,8 +125,8 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(8081, () => {
-    const { address, port } = server.address();
-    console.log(`Server is waiting for connections on: http://${address}:${port}`);
+    const { port, address } = server.address();
+    console.log(`Server is waiting for connections on: http://${address}${port}`);
 });
 
 server.on('connection', (stream) => {
